@@ -1,3 +1,4 @@
+import torch
 import pandas as pd
 from sklearn.model_selection import train_test_split 
 from skipgram_dataset import Skipgram_dataset
@@ -43,5 +44,12 @@ print('Number of sample:', len(train_data))
 
 
 # Save data
-save_path = 'data/generated_data/data.pt'
+save_path = 'data/generated_data/train_data/data.pt'
 skg_dataset.save(path=save_path, data=train_data)
+
+# Save train test data
+save_path = 'data/bbc_data' 
+torch.save(X_train, save_path+'/X_train.pt')
+torch.save(X_test, save_path+'/X_test.pt')
+torch.save(y_train, save_path+'/y_train.pt')
+torch.save(y_test, save_path+'/y_test.pt')
